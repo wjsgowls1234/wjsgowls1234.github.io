@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>랜덤 상장 수여식</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎖 이 상장을 수여함 🎖</h1>
+  <!-- 사용자 입력 -->
+  <label for="name">수상자:</label>
+  <input type="text" id="name" placeholder="이름을 입력하세요">
+  <br><br>
+
+  <!-- 버튼 -->
+  <button onclick="generateAward()">상장 생성</button>
+  <button onclick="downloadPDF()">PDF로 저장</button>
+
+  <!-- 상장 출력 -->
+  <div id="award-container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
