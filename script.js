@@ -140,3 +140,34 @@ function downloadPDF() {
         alert("PDF 저장 중 오류가 발생했습니다. 다시 시도해주세요.");
     });
 }
+
+function shareAwardViaKakao() {
+    const element = document.getElementById("award");
+
+    if (!element) {
+        alert("공유할 상장이 없습니다. 상장을 먼저 생성해주세요!");
+        return;
+    }
+
+    html2canvas(element, { scale: 2, useCORS: true, allowTaint: false })
+        .then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+
+            Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: '수상장',
+                    description: '당신을 위한 특별한 상장!',
+                    imageUrl: imgData, // 이미지 데이터를 사용
+                    link: {
+                        webUrl: window.location.href,
+                        mobileWebUrl: window.location.href,
+                    },
+                },
+            });
+        })
+        .catch((error) => {
+            console.error("이미지 생성 실패:", error);
+            alert("이미지 생성 중 오류가 발생했습니다.");
+        });
+}
