@@ -141,6 +141,39 @@ function downloadPDF() {
     });
 }
 
+function generateShareableLink() {
+    const element = document.getElementById("award");
+
+    if (!element) {
+        alert("공유할 상장이 없습니다. 상장을 먼저 생성해주세요!");
+        return;
+    }
+
+    html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false
+    }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+
+        // 링크 생성
+        const shareableLink = `${window.location.origin}/?image=${encodeURIComponent(imgData)}`;
+
+        // 클립보드에 복사
+        navigator.clipboard.writeText(shareableLink)
+            .then(() => {
+                alert("공유 가능한 링크가 생성되어 클립보드에 복사되었습니다:\n" + shareableLink);
+            })
+            .catch((err) => {
+                console.error("링크 복사 실패:", err);
+                alert("링크 복사에 실패했습니다. 링크를 직접 복사하세요:\n" + shareableLink);
+            });
+    }).catch((error) => {
+        console.error("링크 생성 중 오류 발생:", error);
+        alert("링크 생성 중 오류가 발생했습니다. 다시 시도해주세요.");
+    });
+}
+
 function shareAwardViaKakao() {
     const element = document.getElementById("award");
 
