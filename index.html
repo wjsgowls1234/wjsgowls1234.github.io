@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>도라에몽대학교 랜덤 상장 수여식</title>
+  <title>랜덤 상장 수여식</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>🎖 이 상장을 수여함 🎖</h1>
-  
+
   <label for="name">수상자:</label>
   <input type="text" id="name" placeholder="이름을 입력하세요">
   <br><br>
 
   <button onclick="generateAward()">상장 생성</button>
   <button onclick="downloadPDF()">PDF로 저장</button>
+  <button onclick="shareAwardViaKakao()">카카오톡으로 공유</button>
 
   <div id="award-container"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script>
+    // JavaScript 키로 카카오 SDK 초기화
+    Kakao.init('b0942215474bc1373ced777430185c23'); // YOUR_APP_KEY를 발급받은 JavaScript 키로 교체하세요.
+    console.log(Kakao.isInitialized()); // SDK 초기화 여부 확인
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
