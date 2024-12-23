@@ -1,20 +1,17 @@
 function generateAward() {
     const name = document.getElementById("name").value.trim();
   
-    // 수상자 이름이 입력되지 않았을 경우 경고
     if (!name) {
         alert("수상자 이름을 입력해주세요!");
-        return; // 함수 종료
+        return;
     }
 
-    // 오늘 날짜 생성
     const today = new Date();
     const year = today.getFullYear();
-    const month = today.getMonth() + 1; // 월은 0부터 시작하므로 +1
+    const month = today.getMonth() + 1;
     const date = today.getDate();
     const currentDate = `${year}년 ${month}월 ${date}일`;
 
-    // 상장 텍스트 설정
     const prefixes = ["열정적인",
                     "가장 빠른",
                     "혁신적인",
@@ -100,8 +97,7 @@ function generateAward() {
         <p class="day">${currentDate}</p>
         <p class="dorami">도라에몽대학교 총장 도라미</p>
     `;  
-  
-    // 상장 출력
+
     document.getElementById("award-container").innerHTML = `
       <div id="award">
         ${awardText}
@@ -134,7 +130,7 @@ function downloadPDF() {
         });
 
         const pageWidth = pdf.internal.pageSize.getWidth();
-        const imgWidth = pageWidth - 20; // 좌우 여백
+        const imgWidth = pageWidth - 20;
         const imgHeight = (canvas.height * imgWidth) / canvas.width - 18;
 
         pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
