@@ -156,10 +156,8 @@ function generateShareableLink() {
     }).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
 
-        // 링크 생성
         const shareableLink = `${window.location.origin}/?image=${encodeURIComponent(imgData)}`;
 
-        // 클립보드에 복사
         navigator.clipboard.writeText(shareableLink)
             .then(() => {
                 alert("공유 가능한 링크가 생성되어 클립보드에 복사되었습니다:\n" + shareableLink);
@@ -191,7 +189,7 @@ function shareAwardViaKakao() {
                 content: {
                     title: '수상장',
                     description: '당신을 위한 특별한 상장!',
-                    imageUrl: imgData, // 이미지 데이터를 사용
+                    imageUrl: imgData,
                     link: {
                         webUrl: window.location.href,
                         mobileWebUrl: window.location.href,
